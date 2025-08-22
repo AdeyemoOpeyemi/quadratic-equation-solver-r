@@ -1,0 +1,36 @@
+# R-specific ignores
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user
+.Renviron
+
+# RStudio specific
+.rstudio-desktop/
+
+# R packages
+/library/
+/renv/
+
+# Knitr and R Markdown cache
+*_cache/
+/cache/
+*.utf8.md
+*.knit.md
+
+# General ignores
+.DS_Store
+.Trash-
+
+# Build artifacts
+/build/
+/dist/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+temp/
