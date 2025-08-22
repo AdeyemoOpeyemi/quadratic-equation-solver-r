@@ -1,36 +1,28 @@
 import streamlit as st
-import cmath
+import pandas as pd
 
-def solve_quadratic(a, b, c):
-    """Solves the quadratic equation ax^2 + bx + c = 0"""
-    if a == 0:
-        return "Coefficient 'a' cannot be zero.", None
+# Add a title to the app
+st.title("My Data Science Project")
 
-    discriminant = (b**2) - (4*a*c)
+# Add a header
+st.header("Sample Data")
 
-    if discriminant >= 0:
-        root1 = (-b - discriminant**0.5) / (2*a)
-        root2 = (-b + discriminant**0.5) / (2*a)
-        if root1 == root2:
-            return "The equation has one real root:", f"Root: {root1}"
-        else:
-            return "The equation has two distinct real roots:", f"Root 1: {root1}<br>Root 2: {root2}"
-    else:
-        root1 = (-b - cmath.sqrt(discriminant)) / (2 * a)
-        root2 = (-b + cmath.sqrt(discriminant)) / (2 * a)
-        return "The equation has two complex roots:", f"Root 1: {root1}<br>Root 2: {root2}"
+# Create a sample DataFrame
+data = {
+    'Column 1': [1, 2, 3, 4],
+    'Column 2': [10, 20, 30, 40],
+    'Column 3': ['A', 'B', 'C', 'D']
+}
+df = pd.DataFrame(data)
 
-st.title("Quadratic Equation Solver")
-st.write("This app solves the quadratic equation `ax^2 + bx + c = 0`")
+# Display the DataFrame
+st.write("Here is a sample DataFrame:")
+st.write(df)
 
-st.sidebar.header("User Input Coefficients")
+# Add an interactive widget
+st.sidebar.header("User Input")
+slider_value = st.sidebar.slider("Select a value", 0, 100, 50)
+st.sidebar.write("You selected:", slider_value)
 
-a = st.sidebar.number_input("Enter coefficient a", value=1.0)
-b = st.sidebar.number_input("Enter coefficient b", value=-3.0)
-c = st.sidebar.number_input("Enter coefficient c", value=2.0)
-
-if st.sidebar.button("Solve"):
-    message, roots = solve_quadratic(a, b, c)
-    st.subheader(message)
-    if roots:
-        st.write(roots, unsafe_allow_html=True)
+# Display the selected value in the main app
+st.write("The selected slider value is:", slider_value)

@@ -1,2 +1,8 @@
+
+streamlit
+pandas
+scikit-learn
+
 # No Python dependencies for this project.
 # This file is included for structural completeness.
+
